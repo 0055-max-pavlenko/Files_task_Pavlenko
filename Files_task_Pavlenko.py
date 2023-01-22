@@ -1,11 +1,17 @@
 ﻿
 def print_cook_book(cook_book):
     print('cook_book = {')
+    number_of_recepies = len(cook_book)
+    n=0
     for dish in cook_book:
         print(f"  '{dish}': [")
         for i in range(len(cook_book[dish])):
             print(f'     {cook_book[dish][i]}')
-        print('     ],')
+        n += 1
+        if n < number_of_recepies:
+            print('     ],')
+        else:
+            print('     ]')
     print('}')
 
 def get_shop_list_by_dishes(cook_book, dishes, person_count):
@@ -17,9 +23,14 @@ def get_shop_list_by_dishes(cook_book, dishes, person_count):
             else:
                 shop_list[ingridient['ingredient_name']]['quantity'] += person_count*ingridient['quantity']
     print('{')
+    number_of_ingridients = len(shop_list)
+    n=1
     for ingridient in shop_list:
-        print(f"    '{ingridient}': {shop_list[ingridient]},")
-
+        if n < number_of_ingridients:
+            print(f"    '{ingridient}': {shop_list[ingridient]},")
+        else:
+            print(f"    '{ingridient}': {shop_list[ingridient]}")
+        n += 1
     print('}')
 
 
